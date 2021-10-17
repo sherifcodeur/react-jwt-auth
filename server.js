@@ -5,10 +5,10 @@
     //const dbconnect = require('./database/connection');
     
     //importing routes - example company routes -
-    //const companyRoutes = require('./routes/companyRoutes');
+    const authRoutes = require('./routes/authRoutes');
     
     // PORT defined in the env file
-    const PORT = process.env.PORT || 3000;
+    const PORT = process.env.PORT || 5000;
     
     
     // initializing express application
@@ -26,13 +26,9 @@
     
     // Handle custom routes - add the custom routes
     // app.use('/api/v1/user', require('./routes/userRoutes'))
-    //app.use('/api/companies',companyRoutes);
+    app.use('/api/auth',authRoutes);
     
-    
-    // checks if server is working
-    // app.get('/', (req, res, next) => {
-    //   res.send('Hello from my Express server v2!')
-    // })
+
     
 
     // app listens on the selected Port
