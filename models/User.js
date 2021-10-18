@@ -55,6 +55,11 @@
             next();
     })
 
+    userSchema.methods.matchPasswords = async function(password){
+
+        return await bcrypt.compare(password,this.password)
+    }
+
 
     // creating model User based on the user schema
     const User = mongoose.model('user',userSchema);
