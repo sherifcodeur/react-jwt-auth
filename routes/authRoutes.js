@@ -12,7 +12,7 @@
 
     router.post('/forgotpassword', authController.forgotpassword)
 
-    router.post('/resetpassword/:resetToken', authController.resetpassword)
+    router.put('/resetpassword/:resetToken', authController.resetpassword)
     
     // router.post('/', authController.auth_post)
     

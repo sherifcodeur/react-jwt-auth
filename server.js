@@ -2,7 +2,7 @@
     // importing dependencies
     const express = require('express');
     const dotenv = require('dotenv').config();
-    //const dbconnect = require('./database/connection');
+    const dbconnect = require('./database/connection');
     
     //importing routes - example company routes -
     const authRoutes = require('./routes/authRoutes');
