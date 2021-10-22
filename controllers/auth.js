@@ -1,7 +1,7 @@
 
-const User = require('../models/User')
+const User = require('../models/User');
 
-const ErrorResponse = require('../middlewares/error');
+const ErrorResponse = require('../utils/errorResponse');
 
 
 const register = async (req,res,next) =>{
