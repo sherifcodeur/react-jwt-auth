@@ -3,6 +3,8 @@
     const express = require('express');
     const dotenv = require('dotenv').config();
     const dbconnect = require('./database/connection');
+
+    const errorHandler = require('./middlewares/error')
     
     //importing routes - example company routes -
     const authRoutes = require('./routes/authRoutes');
@@ -29,10 +31,13 @@
     app.use('/api/auth',authRoutes);
     
 
-    
+    //should be last piece of middleware
+    app.use(errorHandler) 
 
     // app listens on the selected Port
     app.listen(PORT, () => {
       console.log("Server listening ")
     })
+
+   
     

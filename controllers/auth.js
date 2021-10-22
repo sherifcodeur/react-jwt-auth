@@ -1,6 +1,9 @@
 
 const User = require('../models/User')
 
+const ErrorResponse = require('../middlewares/error');
+
+
 const register = async (req,res,next) =>{
 
     const {username,email,password} = req.body;
@@ -23,11 +26,7 @@ const register = async (req,res,next) =>{
         
     } catch (error) {
         
-        res.status(500).json({
-
-            success:false,
-            error:error.message
-        })
+        next(error)
         
     }
     
@@ -41,11 +40,7 @@ const login = async (req,res,next) =>{
 
     if(!email || !password){
 
-        res.status(400).json({
-
-            success:false,
-            error:"Please provide an username and a password"
-        })
+      return  next(new ErrorResponse("Please provide an username and a password",400))
 
         
     }
@@ -57,22 +52,14 @@ const login = async (req,res,next) =>{
 
       if(!user) {
 
-        res.status(400).json({
-
-            success:false,
-            error:"Incorrect Credentials"
-        })
+       return next(new ErrorResponse("Incorrect Credential",400))
       }
 
       const isMatch = await user.matchPasswords(password)
 
       if(!isMatch){
 
-        res.status(400).json({
-
-            success:false,
-            error:"Incorrect Credentials"
-        })
+       return next(new ErrorResponse("Incorrect Credentials",400))
 
 
       }
@@ -85,11 +72,7 @@ const login = async (req,res,next) =>{
         
     } catch (error) {
 
-        res.status(500).json({
-
-            sucess:false,
-            error:error.message
-        })        
+        next(error)    
     }
 }
 
