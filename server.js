@@ -5,6 +5,7 @@
     const dbconnect = require('./database/connection');
 
     const errorHandler = require('./middlewares/error')
+    const authMiddleware = require('./middlewares/auth')
     
     //importing routes - example company routes -
     const authRoutes = require('./routes/authRoutes');
@@ -30,7 +31,7 @@
     // Handle custom routes - add the custom routes
     // app.use('/api/v1/user', require('./routes/userRoutes'))
     app.use('/api/auth',authRoutes);
-    app.use('/api/private',privateRoutes);
+    app.use('/api/private',authMiddleware,privateRoutes);
     
 
     //should be last piece of middleware
