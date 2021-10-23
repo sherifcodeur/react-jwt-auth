@@ -18,11 +18,7 @@ const register = async (req,res,next) =>{
 
         });
 
-        res.status(201).json({
-
-            success:true,
-            user
-        })
+        sendToken(user,201,res)
         
     } catch (error) {
         
@@ -64,11 +60,7 @@ const login = async (req,res,next) =>{
 
       }
 
-      res.status(200).json({
-
-        success:true,
-        token:"hehehduh"
-      })
+     sendToken(user,200,res)
         
     } catch (error) {
 
@@ -85,6 +77,18 @@ const forgotpassword = (req,res,next) =>{
 const resetpassword = (req,res,next)=>{
 
         res.send("reset password")
+
+}
+
+const sendToken = (user,statusCode,res)=>{
+
+  const token = user.getSignedToken()
+
+  res.status(statusCode).json({
+
+    success:true,
+    token
+  })
 
 }
 

@@ -8,6 +8,7 @@
     
     //importing routes - example company routes -
     const authRoutes = require('./routes/authRoutes');
+    const privateRoutes = require('./routes/privateRoutes');
     
     // PORT defined in the env file
     const PORT = process.env.PORT || 5000;
@@ -29,6 +30,7 @@
     // Handle custom routes - add the custom routes
     // app.use('/api/v1/user', require('./routes/userRoutes'))
     app.use('/api/auth',authRoutes);
+    app.use('/api/private',privateRoutes);
     
 
     //should be last piece of middleware
