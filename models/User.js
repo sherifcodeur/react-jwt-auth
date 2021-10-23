@@ -7,6 +7,7 @@
     const {isEmail} = require('validator');
     const bcrypt = require('bcryptjs');
     const jwt = require('jsonwebtoken');
+    const crypto = require('crypto');
 
 
 
@@ -65,6 +66,23 @@
     userSchema.methods.getSignedToken =  function(){
 
             return jwt.sign({id:this._id},process.env.JWT_SECRET,{expiresIn:process.env.JWT_EXPIRE})
+    }
+
+
+    
+    userSchema.methods.getResetPasswordToken = function(){
+
+        // we created a reset token randomly
+        const resetToken = crypto.randomBytes(20).toString("hex");
+
+        // we generate a hash using the previous resetToken and save it in db
+        this.resetPasswordToken = crypto.createHash("sha256").update(resetToken).digest("hex");
+
+        // we save the expiration date 10 minutes from now
+        this.resetPasswordExpire = Date.now() + 10 * (60*1000) ; // ten minutes
+
+        // we return the resetToken
+        return resetToken;
     }
 
 

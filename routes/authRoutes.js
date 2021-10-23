@@ -12,17 +12,9 @@
 
     router.post('/forgotpassword', authController.forgotpassword)
 
-    router.put('/resetpassword/:resetToken', authController.resetpassword)
+    router.put('/password-reset/:resetToken', authController.resetpassword)
     
-    // router.post('/', authController.auth_post)
-    
-    // router.get('/show/:id',authController.auth_show)
-    
-    // router.put('/update/:id',authController.auth_put)
-    
-    // router.delete('/delete/:id',authController.auth_delete)
-    
-    // router.get('/search',authController.auth_search)
+
     
     module.exports = router ;
     
