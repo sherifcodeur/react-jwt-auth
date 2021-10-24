@@ -34,7 +34,7 @@ const Register = ({history}) => {
             password,
              },config);
 
-             //localStorage.setItem("authToken", data.token);
+             localStorage.setItem("authToken", data.token);
 
              history.push("/");
 
