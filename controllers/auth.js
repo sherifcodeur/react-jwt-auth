@@ -10,6 +10,8 @@ const register = async (req,res,next) =>{
 
     const {username,email,password} = req.body;
 
+    
+
     try {
 
         const user = await User.create({

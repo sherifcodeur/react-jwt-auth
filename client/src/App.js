@@ -5,12 +5,14 @@ import {
   Link
 } from "react-router-dom";
 
+import Register from './components/Register'
+
 function App() {
   return (
     <Router>
     <div className="App">
       <Switch>
-        <Route  path="/register" component={Register} />
+        <Route exact path="/register" component={Register} />
 
 
         

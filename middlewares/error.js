@@ -22,7 +22,7 @@ const errorHandler = (err,req,res,next)=>{
 
         let message = Object.values(err.errors).map((val)=>val.message);
 
-        error = new ErrorResponse(message,400)
+        error = new ErrorResponse("probleme de validation roger",400)
     }
 
     res.status(error.statusCode || 500).json({
