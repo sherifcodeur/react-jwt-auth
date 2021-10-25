@@ -43,7 +43,7 @@ const Login = ({history}) => {
 
             localStorage.setItem("authToken", data.token);
 
-            history.push('/')
+            history.push('/private')
             
         } catch (error) {
 

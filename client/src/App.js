@@ -7,6 +7,8 @@ import {
 
 import Register from './components/Register'
 import Login from './components/Login'
+import PrivateRoute from "./routes/PrivateRoute";
+import Private from "./components/Private";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <Switch>
         <Route exact path="/register" component={Register} />
         <Route exact path="/login" component={Login} />
+
+        <PrivateRoute exact path="/private" component={Private} />
 
 
         
