@@ -1,5 +1,6 @@
 import axios from "axios";
-import { useState } from "react";
+import { useState ,useEffect} from "react";
+import { Link } from 'react-router-dom';
 
 import('./login.css')
 
@@ -9,6 +10,18 @@ const Login = ({history}) => {
     const [email,setEmail] = useState("")
 
     const [password,setPassword]= useState("")
+
+    const [error,setError]= useState("")
+
+    useEffect(()=>{
+
+        if(localStorage.getItem("authToken")){
+
+            history.push("/")
+        }
+    },[history]);
+
+
 
     const handleSubmit = async(e)=>{
 
@@ -34,7 +47,16 @@ const Login = ({history}) => {
             
         } catch (error) {
 
-            console.log(error)
+            setError(error.response.data.error)
+
+            setTimeout(()=>{
+
+                setError("")
+            },5000)
+
+            
+            
+        
             
         }
 
@@ -46,7 +68,12 @@ const Login = ({history}) => {
 
     <form className="login-screen__form" onSubmit={handleSubmit}>
 
+    <h3 className="register-login__title">Login</h3>
+
+    {error && <span className="error-message">{error}</span>}
+
         <div className="form-group">
+
 
             <label htmlFor="email">Email</label>
             <input type="email" onChange={(e)=>setEmail(e.target.value)} value={email} name="" id="" required />
@@ -60,7 +87,9 @@ const Login = ({history}) => {
 
         </div>
 
-        <button className="btn" type="submit">Submit</button>
+        <button className="btn btn-primary" type="submit">Login</button>
+
+        <span className="login-screen__subtext">No account yet ? <Link to="/register">Register</Link></span>
 
 
     </form>
