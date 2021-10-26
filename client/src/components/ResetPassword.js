@@ -18,6 +18,7 @@ const ResetPassword = ({history,match}) => {
 
 
         e.preventDefault();
+        setError("");
 
         const config = {
             header: {
@@ -44,12 +45,22 @@ const ResetPassword = ({history,match}) => {
 
                     setSuccess(data.data)
 
+                    setTimeout(()=>{
+
+                        history.push('/login')
+
+                    },2000)
+
 
 
                     
                 } catch (error) {
 
                     setError("error in setting up your new password")
+
+                    setTimeout(() => {
+                        setError("");
+                      }, 5000);
 
                 
                     
