@@ -117,7 +117,10 @@ try {
       text:message
     })
 // we send a positive status if email sent with success
-res.status(200).send("email successfully sent")
+res.status(200).json({
+  success:true,
+  data:"email sent"
+})
 } catch (error) {
 
 

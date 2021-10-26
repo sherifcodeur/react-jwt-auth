@@ -2,7 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 
 
-const Private = () => {
+const Private = ({history}) => {
 
     const [error,setError] = useState("")
     const [data,setData] = useState("")
@@ -49,12 +49,19 @@ const Private = () => {
 
     },[])
 
+    const logoutHandler =()=>{
 
+
+        localStorage.removeItem("authToken")
+        history.push("/login");
+    }
 
     return error ? (<span>{error}</span>):( <div className="container">
 
 
         {data}
+
+        <button onClick={logoutHandler}>Logout</button>
     </div> );
 }
  

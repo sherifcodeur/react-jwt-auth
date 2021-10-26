@@ -82,7 +82,11 @@ const Login = ({history}) => {
 
         <div className="form-group">
 
-            <label htmlFor="password">Password</label>
+        <label htmlFor="password">
+            Password:{" "}
+            <Link to="/forgot-password" className="login-screen__forgotpassword">
+              Forgot Password?
+            </Link></label>
             <input type="password" onChange={(e)=>setPassword(e.target.value)} value={password} name="" id="" required />
 
         </div>
